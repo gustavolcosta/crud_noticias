@@ -1,0 +1,68 @@
+.sidebar-panel {
+  background: #b71c1c;
+  width: 100%;
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  height: 70px;
+  transition: all 500ms;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-left {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.brand {
+  margin-left: 35px;
+  padding-top: 7px;
+  color: white;
+  text-align: end;
+  font-size: 22px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.peso {
+  font-weight: 700;
+}
+
+.linha-vertical {
+  height: 50px;
+  border-left: 2px solid #fff;
+  margin-left: 35px;
+  margin-right: 35px;
+}
+
+.topbutton {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  margin: 0 5px;
+  border-radius: 3px;
+  transition: all 400ms;
+  height: 40px;
+  text-decoration: none;
+  text-transform: uppercase;
+  background-color: #b71c1c;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+.topbutton:hover {
+  background-color: #fff !important;
+  color: #b71c1c !important;
+}
+
+.active button {
+  background: #fff;
+  color: #fff !important;
+  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14),
+    0 7px 10px -5px rgba(60, 72, 88, 0.4);
+  -webkit-transition: all 400ms;
+  -moz-transition: all 400ms;
+  -ms-transition: all 400ms;
+  -o-transition: all 400ms;
+  transition: all 400ms;
+}

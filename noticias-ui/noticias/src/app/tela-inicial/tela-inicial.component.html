@@ -1,0 +1,12 @@
+<nav class="sidebar-panel" id="sidebar">
+  <div class="nav-left">
+    <div class="brand"><span class="peso">CRUD</span> NOTICIAS <br /></div>
+    <div class="linha-vertical"></div>
+    <button class="topbutton" (click)="habilitaCadastrarNoticia()">
+      Nova noticia
+    </button>
+  </div>
+</nav>
+<div *ngIf="visualizarCadastrarNoticia">
+  <app-cadastrar-noticia></app-cadastrar-noticia>
+</div>
