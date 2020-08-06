@@ -1,16 +1,21 @@
 <div class="blocoCadastro">
   <mat-card>
     <h2>Nova noticia</h2>
-    <form class="example-form">
+    <form class="example-form" [formGroup]="formInput" autocomplete="off">
       <div class="input">
         <mat-form-field appearance="outline" class="inputTitulo">
           <mat-label>Título</mat-label>
-          <input matInput />
+          <input matInput formControlName="titulo" required />
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="inputData">
           <mat-label>Data de Publicação</mat-label>
-          <input matInput [matDatepicker]="picker" />
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="dataPublicacao"
+            required
+          />
           <mat-datepicker-toggle
             matSuffix
             [for]="picker"
@@ -24,9 +29,11 @@
           matInput
           cdkTextareaAutosize
           cdkAutosizeMinRows="15"
+          formControlName="conteudo"
+          required
         ></textarea>
       </mat-form-field>
-      <button class="button">
+      <button class="button" (click)="salvarNoticia()">
         Salvar
       </button>
     </form>

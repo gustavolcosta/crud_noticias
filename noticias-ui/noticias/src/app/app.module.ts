@@ -17,6 +17,8 @@ import { MatCardModule } from "@angular/material/card";
 import { MatInputModule } from "@angular/material/input";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatCheckboxModule } from "@angular/material/checkbox";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [AppComponent, TelaInicialComponent, CadastrarNoticiaComponent],
@@ -32,6 +34,9 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
     MatCheckboxModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: "pt-BR" }],
   bootstrap: [AppComponent],
