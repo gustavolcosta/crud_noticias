@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 
 @Component({
   selector: "app-tela-inicial",
@@ -6,12 +6,7 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./tela-inicial.component.css"],
 })
 export class TelaInicialComponent implements OnInit {
-  visualizarCadastrarNoticia = false;
   constructor() {}
 
   ngOnInit() {}
-
-  habilitaCadastrarNoticia() {
-    this.visualizarCadastrarNoticia = true;
-  }
 }

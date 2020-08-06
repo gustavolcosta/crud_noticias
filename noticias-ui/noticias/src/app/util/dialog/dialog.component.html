@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>{{ data.title ? data.title : 'Confirmar Exclusão' }}</h2>
+<mat-dialog-content class="mat-typography">
+  <h3>{{ data.message }}</h3>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close cdkFocusInitial>
+    Cancelar
+  </button>
+  <button mat-raised-button color="warn" [mat-dialog-close]="true">
+    {{ data.txtBtn ? data.txtBtn : 'Excluir' }}
+  </button>
+</mat-dialog-actions>

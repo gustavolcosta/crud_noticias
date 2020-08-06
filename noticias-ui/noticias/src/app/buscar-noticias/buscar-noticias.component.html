@@ -1,0 +1,90 @@
+<div class="blocoBusca">
+  <mat-card>
+    <h2>Buscar noticias</h2>
+    <form [formGroup]="formBusca" autocomplete="off">
+      <mat-form-field appearance="outline">
+        <mat-label>Título</mat-label>
+        <input matInput formControlName="titulo" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Data de Publicação</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          formControlName="dataPublicacao"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Conteudo</mat-label>
+        <textarea
+          matInput
+          cdkTextareaAutosize
+          formControlName="conteudo"
+        ></textarea>
+      </mat-form-field>
+
+      <button (click)="buscarNoticias()" type="button" class="botaoBusca">
+        Buscar noticias
+      </button>
+    </form>
+  </mat-card>
+
+  <mat-card>
+    <mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="titulo">
+        <mat-header-cell *matHeaderCellDef> Titulo </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.titulo }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="data">
+        <mat-header-cell *matHeaderCellDef>
+          Data de Publicação
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{ element.dataPublicacao | date: "dd/MM/yyyy" }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="acoes">
+        <mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button
+            mat-icon-button
+            type="button"
+            matTooltip="Alterar noticia"
+            (click)="editarNoticia(element)"
+          >
+            <mat-icon aria-label="Alterar noticia">edit</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            type="button"
+            matTooltip="Visualizar noticia"
+            (click)="visualizarNoticia(element)"
+          >
+            <mat-icon aria-label="Visualizar noticia">visibility</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            type="button"
+            matTooltip="Remover noticia"
+            (click)="removerNoticia(element)"
+          >
+            <mat-icon aria-label="Remover noticia">delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+    <mat-paginator
+      [pageSizeOptions]="paginatorOptions"
+      [length]="calculaTamanhoPaginator()"
+      showFirstLastButtons
+    ></mat-paginator>
+  </mat-card>
+</div>

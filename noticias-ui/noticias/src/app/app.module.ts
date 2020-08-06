@@ -1,3 +1,4 @@
+import { DialogComponent } from "./util/dialog/dialog.component";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 
@@ -11,6 +12,7 @@ import {
   MatDatepickerModule,
   MAT_DATE_LOCALE,
   MatNativeDateModule,
+  MatPaginatorIntl,
 } from "@angular/material";
 import { MatIconModule } from "@angular/material";
 import { MatCardModule } from "@angular/material/card";
@@ -19,9 +21,21 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import { MatTableModule } from "@angular/material";
+import { BuscarNoticiasComponent } from "./buscar-noticias/buscar-noticias.component";
+import { getPtBrPaginatorIntl } from "./util/paginator/br-paginator";
+import { MatPaginatorModule } from "@angular/material";
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatTooltipModule } from "@angular/material/tooltip";
 
 @NgModule({
-  declarations: [AppComponent, TelaInicialComponent, CadastrarNoticiaComponent],
+  declarations: [
+    AppComponent,
+    TelaInicialComponent,
+    CadastrarNoticiaComponent,
+    BuscarNoticiasComponent,
+    DialogComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -37,8 +51,16 @@ import { HttpClientModule } from "@angular/common/http";
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatDialogModule,
+    MatTooltipModule,
   ],
-  providers: [{ provide: MAT_DATE_LOCALE, useValue: "pt-BR" }],
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue: "pt-BR" },
+    { provide: MatPaginatorIntl, useValue: getPtBrPaginatorIntl() },
+  ],
   bootstrap: [AppComponent],
+  entryComponents: [DialogComponent],
 })
 export class AppModule {}

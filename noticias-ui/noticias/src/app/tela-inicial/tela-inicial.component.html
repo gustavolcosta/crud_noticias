@@ -2,15 +2,11 @@
   <div class="nav-left">
     <div class="brand"><span class="peso">CRUD</span> NOTICIAS <br /></div>
     <div class="linha-vertical"></div>
-    <button
-      class="topbutton"
-      [routerLink]="['/cadastrar-noticia']"
-      (click)="habilitaCadastrarNoticia()"
-    >
+    <button class="topbutton" [routerLink]="['/cadastro-noticia/cadastrar']">
       Nova noticia
+    </button>
+    <button class="topbutton" [routerLink]="['/buscar-noticias']">
+      Buscar noticias
     </button>
   </div>
 </nav>
-<!-- <div *ngIf="visualizarCadastrarNoticia">
-  <app-cadastrar-noticia></app-cadastrar-noticia>
-</div> -->

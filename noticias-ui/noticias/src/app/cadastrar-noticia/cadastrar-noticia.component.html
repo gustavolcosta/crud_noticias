@@ -1,11 +1,18 @@
 <div class="blocoCadastro">
   <mat-card>
-    <h2>Nova noticia</h2>
+    <h2 *ngIf="!modoVisualizacao">
+      {{ modoEdicao ? "Alterar Noticia" : "Nova noticia" }}
+    </h2>
     <form class="example-form" [formGroup]="formInput" autocomplete="off">
       <div class="input">
         <mat-form-field appearance="outline" class="inputTitulo">
           <mat-label>Título</mat-label>
-          <input matInput formControlName="titulo" required />
+          <input
+            matInput
+            formControlName="titulo"
+            required
+            [readonly]="modoVisualizacao"
+          />
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="inputData">
@@ -15,6 +22,7 @@
             [matDatepicker]="picker"
             formControlName="dataPublicacao"
             required
+            [readonly]="modoVisualizacao"
           />
           <mat-datepicker-toggle
             matSuffix
@@ -31,9 +39,14 @@
           cdkAutosizeMinRows="15"
           formControlName="conteudo"
           required
+          [readonly]="modoVisualizacao"
         ></textarea>
       </mat-form-field>
-      <button class="button" (click)="salvarNoticia()">
+      <button
+        class="button"
+        (click)="salvarNoticia()"
+        *ngIf="!modoVisualizacao"
+      >
         Salvar
       </button>
     </form>
