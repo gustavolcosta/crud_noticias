@@ -62,4 +62,12 @@ public class NoticiaController
 	{
 		noticiaService.removerNoticia(idNoticia);
 	}
+	
+	@GetMapping("/buscarNoticia/{idNoticia}")
+	public Noticia buscarNoticiaPorId(@PathVariable Long idNoticia)
+	{
+		Noticia noticia = noticiaService.buscarNoticiaPorId(idNoticia);
+		
+		return noticia;
+	}
 }
