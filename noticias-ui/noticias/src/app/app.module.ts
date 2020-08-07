@@ -27,6 +27,7 @@ import { getPtBrPaginatorIntl } from "./util/paginator/br-paginator";
 import { MatPaginatorModule } from "@angular/material";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatTooltipModule } from "@angular/material/tooltip";
+import { DialogBasicComponent } from "./util/dialogBasic/dialogBasic.component";
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { MatTooltipModule } from "@angular/material/tooltip";
     CadastrarNoticiaComponent,
     BuscarNoticiasComponent,
     DialogComponent,
+    DialogBasicComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +63,6 @@ import { MatTooltipModule } from "@angular/material/tooltip";
     { provide: MatPaginatorIntl, useValue: getPtBrPaginatorIntl() },
   ],
   bootstrap: [AppComponent],
-  entryComponents: [DialogComponent],
+  entryComponents: [DialogComponent, DialogBasicComponent],
 })
 export class AppModule {}

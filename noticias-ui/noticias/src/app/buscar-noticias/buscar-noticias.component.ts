@@ -66,7 +66,6 @@ export class BuscarNoticiasComponent implements OnInit {
     this.noticiaService.buscarTodasNoticias().subscribe((resultado) => {
       this.listaNoticias = resultado;
       this.montarTabelaNoticias(this.listaNoticias);
-      //console.table(this.listaNoticias);
     });
   }
 
@@ -110,7 +109,6 @@ export class BuscarNoticiasComponent implements OnInit {
               const index = this.listaNoticias.indexOf(noticia);
               this.listaNoticias.splice(index, 1);
               this.montarTabelaNoticias(this.listaNoticias);
-              console.log("Removeu!");
 
               console.table(this.dataSource.data);
             });

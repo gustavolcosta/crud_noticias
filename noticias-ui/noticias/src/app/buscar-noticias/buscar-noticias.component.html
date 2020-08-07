@@ -2,11 +2,11 @@
   <mat-card>
     <h2>Buscar noticias</h2>
     <form [formGroup]="formBusca" autocomplete="off">
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" class="inputForm">
         <mat-label>Título</mat-label>
         <input matInput formControlName="titulo" />
       </mat-form-field>
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" class="elementosFormBusca">
         <mat-label>Data de Publicação</mat-label>
         <input
           matInput
@@ -17,7 +17,7 @@
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" class="elementosFormBusca inputForm">
         <mat-label>Conteudo</mat-label>
         <textarea
           matInput
@@ -26,21 +26,28 @@
         ></textarea>
       </mat-form-field>
 
-      <button (click)="buscarNoticias()" type="button" class="botaoBusca">
+      <button (click)="buscarNoticias()" class="botaoBusca elementosFormBusca">
         Buscar noticias
       </button>
     </form>
   </mat-card>
 
-  <mat-card>
-    <mat-table [dataSource]="dataSource">
+  <mat-card class="matCardTable">
+    <mat-table
+      [dataSource]="dataSource"
+      matSort
+      matSortDirection="asc"
+      matSortDisableClear
+    >
       <ng-container matColumnDef="titulo">
-        <mat-header-cell *matHeaderCellDef> Titulo </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          Titulo
+        </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{ element.titulo }} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="data">
-        <mat-header-cell *matHeaderCellDef>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
           Data de Publicação
         </mat-header-cell>
         <mat-cell *matCellDef="let element">

@@ -9,6 +9,8 @@ import {
   FormControl,
   Validators,
 } from "@angular/forms";
+import { MatDialog } from "@angular/material";
+import { DialogBasicComponent } from "../util/dialogBasic/dialogBasic.component";
 
 @Component({
   selector: "app-cadastrar-noticia",
@@ -28,7 +30,8 @@ export class CadastrarNoticiaComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private noticiaService: NoticiaService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -49,27 +52,47 @@ export class CadastrarNoticiaComponent implements OnInit {
           .alterarNoticia(this.idNoticia, noticiaForm)
           .subscribe((resultado) => {
             this.noticia = resultado;
+
+            this.dialog
+              .open(DialogBasicComponent, {
+                data: {
+                  title: "",
+                  message: "Alteração realizada com sucesso!",
+                },
+              })
+              .afterClosed()
+              .subscribe((resultado) => {
+                this.router.navigate(["/buscar-noticias"]);
+              });
           });
       } else {
+        //Modo cadastrar
         this.noticiaService.salvarNoticia(noticiaForm).subscribe(
           (resposta) => {
             this.noticia = resposta;
-            console.log(this.noticia);
-            this.alertService.showMessage(
-              "Noticia adicionada com sucesso!",
-              "success"
-            );
+
+            this.dialog
+              .open(DialogBasicComponent, {
+                data: {
+                  title: "",
+                  message: "Noticia adicionada com sucesso!",
+                },
+              })
+              .afterClosed()
+              .subscribe((resultado) => {
+                this.router.navigate(["/buscar-noticias"]);
+              });
           },
           (err) => {
-            this.alertService.showMessage(
-              "Houve um erro ao adicionar a noticia",
-              "danger"
-            );
+            this.dialog.open(DialogBasicComponent, {
+              data: {
+                title: "",
+                message: "Houve um erro ao cadastrar a noticia!",
+              },
+            });
           }
         );
       }
-
-      this.router.navigate(["/buscar-noticias"]);
     }
   }
 
