@@ -8,7 +8,9 @@ Esta é uma aplicação simples de um CRUD de noticias utilizando Angular (front
 #Frontend
 - Código se encontra na pasta noticias-ui utilizando Angular.
 
-#Pré-requisitos
-- A criação de um banco utilizando PostgresSQL onde as propriedades necessárias se encontram em [properties](noticias-api/src/main/resources/application.properties)
+#Utilização
+- A Aplicação pode ser utilizada através de containeres, basta realizar o download do Docker através deste [link](https://www.docker.com/products/docker-desktop). Feita a instalação execute o arquivo docker-compose.yml atráves do comando docker-compose up, ao terminar o processo, a aplicação pode ser acessada em localhost:4200.
+
+
 
 
