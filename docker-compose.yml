@@ -1,0 +1,47 @@
+# Docker Compose file Reference (https://docs.docker.com/compose/compose-file/)
+version: "3.8"
+
+#Define services
+services:
+  #PostgreSQL Database for the application
+  db:
+    image: "postgres:12.3-alpine"
+    container_name: postgres-container
+    #Volume mounted for database for the storage
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - 5435:5432 # Forward the exposed port 5432 on the container to port 5432 on the host machine
+
+    #Environment variable for DB name, user and password
+    environment:
+      - POSTGRES_DB=db_noticias
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  #Back-end Spring Boot Application
+  noticias-app:
+    #The docker file in scrum-app build the jar and provides the docker image with the following name.
+    build: ./noticias-api
+    container_name: noticias-app
+    #Environment variables for Spring Boot Application.
+    environment:
+      - DB_SERVER=db
+      - POSTGRES_DB=db_noticias
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 8080:8080 # Forward the exposed port 8080 on the container to port 8080 on the host machine
+    depends_on:
+      - db
+  #Fron-end Angular Application
+  noticias-ui:
+    build: .\noticias-ui\noticias
+    container_name: noticias-ui
+    ports:
+      - 4200:80
+    depends_on:
+      - noticias-app
+
+volumes:
+  postgres-data:

@@ -11,12 +11,13 @@
 	<groupId>com</groupId>
 	<artifactId>noticias</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>noticias</name>
 	<description>CRUD de Noticias</description>
 
 	<properties>
 		<java.version>11</java.version>
+		<maven.test.skip>true</maven.test.skip>
 	</properties>
 	<dependencies>
 		<dependency>
